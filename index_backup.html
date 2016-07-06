@@ -1,0 +1,156 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Manas Joshi</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js"></script>
+  </head>
+  <body>
+  <div class="navbar navbar-fixed-top" style="width: 100vw;">
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+          <span class="icon-bar" style="background-color:black;"></span>
+          <span class="icon-bar" style="background-color:black;"></span>
+          <span class="icon-bar" style="background-color:black;"></span>
+      </button>
+      <div class="navHeaderCollapse navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+              <li style="background-color:rgba(2,175,176,0.6)"><a href="index.html">Home</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="resume.html">Resume</a></li>
+              <li><a href="pong.html">Pong</a></li>
+          </ul>
+      </div>
+  </div>
+<br>
+<br>
+<br>
+<h1>MANAS JOSHI</h1>
+<hr>
+<br>
+<p id = "intro">I am a student at the University of Waterloo. I intend to learn Computer Science and Applied Math with an option in Engineering(specifically Communication and Control).</p>
+<p id="coop">
+<img align="right" src="cspic2.png" id="cspic" class ="animated bounceInLeft"></img>
+<p id = "pitch">
+Currently, I am seeking a Co-Op position in Software Development, Web Development, Engineering or Analytics. I have a wide ranging skill set as I am taking courses in Math, Computer Science and Electrical and Computer Engineering. I look to further myself this Spring by living in the Velocity Residence. I will have the opportunity to work with students on their startups as a developer. During the process, I hope to gain some knowledge in business and design as well.
+</p>
+
+<p>
+I will surely be an asset to your startup/company. For more information, please see my resume.
+<br>
+Or contact me:
+<br>
+<a href ="mailto:mvjoshi@uwaterloo.ca" id="email">mvjoshi@uwaterloo.ca</a>
+<br>
+Cell: (416)-986-8402
+<br>
+            I would love to chat!
+
+</p>
+</p>
+
+<div id="footer">
+
+
+</div>
+    <script type="text/babel">
+    // set up the mongodb stuff
+
+  //
+  var arrComments = [];
+    var counter = 0;
+    var comment;
+
+    var CommentList = React.createClass({
+      getInitialState: function()
+      {return {arrComments:[]}
+      },
+      render: function(){
+
+
+
+      var comments = this.props.arrComments.map(function(text){
+        return <Comment comment_arg = {text}></Comment>
+      });
+
+        return (
+          <div>
+          {comments}
+          </div>
+        );
+      }
+    });
+
+    var Comment = React.createClass({
+      render: function(){
+      return(
+        <div>
+        <p>Your Comment: {this.props.comment_arg}</p>
+        </div>
+      );
+      }});
+
+
+
+    var CommentForm = React.createClass({
+      getInitialState: function(){
+        return{comment: '',
+               arrComments: []}
+      },
+      inputChange: function(e){
+        this.setState({comment: e.target.value});
+      },
+      addComment: function(e){
+        e.preventDefault();
+        arrComments.push(this.state.comment);
+        this.setState({
+          arrComments:this.state.arrComments,
+          comment: ''
+        });
+        console.log(this.state.comment);
+      },
+      render:function(){
+        return (
+          <form onSubmit={this.addComment}>
+          <input type="text" onChange={this.inputChange} value={this.state.comment}></input>
+          </form>
+        );
+      }
+    });
+    var x = [];
+
+
+
+
+    var CommentBox = React.createClass({
+      updateArray: function(){
+          this.setState({arrComments: arrComments});
+      },
+      getInitialState: function(){
+        return {
+          arrComments: arrComments
+        };
+      },
+      componentDidMount: function(){
+        setInterval(this.updateArray,2000);
+      },
+      render: function(){
+        return (
+          <div>
+          <p>{"hsdjh"}</p>
+          <CommentList arrComments = {arrComments}/>
+          <p>this is after the comment list</p>
+          <CommentForm />
+          </div>
+        );
+      }
+    });
+
+    ReactDOM.render(<CommentBox />,document.getElementById('footer')
+    );
+
+    </script>
+  </body>
+</html>
