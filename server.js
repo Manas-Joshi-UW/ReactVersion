@@ -21,7 +21,7 @@ var port = Number(process.env.PORT || 3000);
 app.listen(port);
 // set up the mongodb stuff
 
-mongoose.connect('mongodb://localhost/data/db');
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds011374.mlab.com:11374/heroku_2s3hcrrn');
 //
 
 // we need to check if the connection is successful or not.
