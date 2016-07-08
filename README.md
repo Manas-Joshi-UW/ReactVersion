@@ -8,7 +8,7 @@ WELCOME TO MANAS JOSHI'S REACT VERSION:
 Make sure you have the dependencies in the in package.json file.
 If you don't have all, just try npm install.
 
-3.Install mongodb on your computer, installation may vary with os.
+3. Install mongodb on your computer, installation may vary with os.
 --------
 4. Create a directory: 
 ------
