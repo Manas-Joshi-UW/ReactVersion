@@ -1,0 +1,1 @@
+Cannot GET /path/to/lightbox.js

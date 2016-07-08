@@ -1,0 +1,107 @@
+html{
+    height: 100vh;
+    width:100%;
+    overflow-x:hidden;
+}
+h1{
+   font-size: 4.0em;
+   text-align: center;
+   font-family: 'lato',sans-serif;
+}
+#intro{
+   font-size: 16pt;
+   text-align: center;
+   font-family: 'lato',sans-serif;
+   font-weight:400;
+   padding: 10px;
+}
+#cspic{
+    padding: 50px;
+    display: inline-block;
+}
+p,#info{
+   font-size: 16pt;
+   text-align: center;
+   font-family: 'lato',sans-serif;
+   font-weight: 100;
+    padding: 15px;
+}
+hr{
+  height:0.15em;
+  background-color: rgba(2,175,176,0.6);
+  width: 80%;
+}
+.nav.navbar-nav{
+    width:100vw;
+}
+.nav{
+   background-color: rgba(0,0,0,0.75);
+   font-size: 1.2em;
+   color:white;
+   text-align: center;
+   font-weight: bold;
+   width:100vw;
+   font-family: 'lato',sans-serif;
+}
+
+.nav a{
+   color:white;
+   font-size: 16pt;
+}
+.nav.navbar-nav.navbar-left>li>a:hover,
+.nav.navbar-nav.navbar-left>li>a:focus{
+   color:white;
+   background-color: rgba(30,175,176,0.4);
+}
+
+.navbar-toggle{
+   border:2px;
+   border-color:black;
+   background-color:rgba(2,175,176,0.8);
+}
+.nav.navbar-nav.navbar-left>li{
+    width:25vw;
+}
+
+.nav.navbar-nav.navbar-left>li>a::selection{
+   background-color:rgba(2,175,176,0.6);
+}
+p::selection{
+  background-color:rgba(2,175,176,0.6);
+}
+h1::selection{
+  background-color:rgba(2,175,176,0.6);
+}
+
+@media screen and (max-width:800px){
+body{
+   border-width:15px;
+   border-style: solid;
+   border-color:rgba(2,175,176,0.6);
+    width: 100%;
+   }
+    .navbar-toggle{
+   border:2px;
+   border-color:black;
+   background-color:rgba(2,175,176,0.8);
+   margin: 20px;
+}
+    #cspic{
+display:inline;
+width: 80vw;
+    }
+}
+#pitch{
+    padding:35px;
+}
+@media screen and (max-width:500px){
+body{
+   border-width:15px;
+   border-style: solid;
+   border-color:rgba(2,175,176,0.6);
+
+   }
+    #cspic{
+display:none;
+    }
+}

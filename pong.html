@@ -1,0 +1,203 @@
+
+<html>
+<canvas id="gameCanvas" width="800"  height="600"></canvas>
+
+<script>
+ var canvas;
+ var canvascontext;
+ var r=255;
+ var b=255;
+ var g=255;
+ var rstring=r.toString();
+ var gstring=g.toString();
+ var bstring=b.toString();
+ var col;
+ var count=0;
+ var p1score=0;
+ var p2score=0;
+ var framesPerSec=30; // calls function 30 times a second
+ var paddle1x=10; // distance of the paddle from the right of the screen
+ const Paddle_Height = 100; // the vertical height of the paddle
+ var topPaddle1y;
+ var topPaddle2y=250;
+ var ballspeedX = 10; // horizontal speed of the ball
+ var ballspeedY = 2; // vertical speed of the ball
+ var ballX=50; // starting horizontal postion of the ball
+ var ballY = 100; // starting vertical position of the ball
+ var win = false;
+
+function OnMouseClick(evt){
+    if(win){
+        p1score = 0;
+        p2score = 0;
+        win = false;
+    }
+}
+window.onload = function () {
+
+console.log(r);
+console.log(g);
+console.log(b);
+canvas=document.getElementById('gameCanvas');
+canvascontext=canvas.getContext('2d');
+
+
+setInterval(function(){
+    drawShapes();
+    moveEverything();
+},1000/framesPerSec);
+
+canvas.addEventListener('mousedown',OnMouseClick);
+
+canvas.addEventListener('mousemove', function(evt){
+        var mousePos = MousePos(evt);
+        topPaddle1y = mousePos.y-Paddle_Height/2;
+
+
+    });
+}
+
+
+function makeColor(){
+
+        r=Math.floor((Math.random() * 255) + 1);
+            b=Math.floor((Math.random() * 255) + 1);
+            g=Math.floor((Math.random() * 255) + 1);
+            rstring=r.toString();
+            bstring=b.toString();
+            gstring=g.toString();
+
+
+}
+function MousePos (evt){
+    var rect = canvas.getBoundingClientRect();
+    var root = document.documentElement;
+    Xpos=evt.clientX-rect.left - root.scrollLeft;
+    Ypos=evt.clientY-rect.top - root.scrollTop;
+    return {
+      x: Xpos,
+      y: Ypos
+    };
+}
+function resetGame(){
+    ballX=canvas.width/2;
+    ballY=canvas.height/2;
+}
+
+
+function paddle2AI(){
+    var paddle2centy = (topPaddle2y + Paddle_Height/2);
+     if (paddle2centy>ballY+35){
+        topPaddle2y-=8;
+    }
+    else if (paddle2centy<ballY-35){
+        topPaddle2y+=8;
+    }
+}
+
+
+function moveEverything(){
+    paddle2AI();
+    ballX+=ballspeedX;
+    ballY+=ballspeedY;
+    if(win){
+    showWinScreen();
+    return;
+    }
+     if(ballX==10){
+         console.log("At 15: Ball Y is at pos: "+ ballY);
+         console.log()
+        if(ballY - ballspeedY>(topPaddle1y) && ballY - ballspeedY<(topPaddle1y+Paddle_Height)){
+        ballspeedX=-ballspeedX;
+        var deltaY=ballY - (topPaddle1y+Paddle_Height/2);
+        ballspeedY = deltaY * 0.35;
+        makeColor();
+
+        }
+    }
+    else if(ballX==canvas.width-10){
+        if(ballY>(topPaddle2y) && ballY<(topPaddle2y+Paddle_Height)){
+         var deltaY=ballY - (topPaddle2y+Paddle_Height/2);
+        ballspeedY = deltaY * 0.25;
+        ballspeedX=-ballspeedX;
+              makeColor();
+        }
+    }
+    else if(ballX>canvas.width){
+        ballspeedX=-ballspeedX;
+        ballspeedY = 2;
+        p1score++;
+        resetGame();
+        keepScore(p1score);
+        makeColor();
+    }
+    else if(ballY>canvas.height){
+        ballspeedY=-ballspeedY;
+        makeColor();
+    }
+    else if(ballX<0){
+        ballspeedX=-ballspeedX;
+        ballspeedY = 2;
+        p2score++;
+        resetGame();
+        makeColor();
+    }
+    else if(ballY<0){
+        ballspeedY=-ballspeedY;
+        makeColor();
+    }
+
+
+
+
+ }
+function drawShapes() {
+
+
+// Next line draws the black background//
+colorRect(0,0,canvas.width,canvas.height,'black'); // call to a function.
+
+canvascontext.fillStyle='white';
+canvascontext.fillText(p1score,75,50);
+canvascontext.fillText(p2score,725,50);
+if(p1score==3||p2score==3){
+    p1score = 0;
+    p2score = 0;
+    win = true;
+}
+if(win){
+    showWinScreen();
+    return;
+}
+// These few lines draw the circle
+col="rgba("+rstring+","+gstring+","+bstring+","+1;
+canvascontext.fillStyle=col;
+canvascontext.beginPath();
+canvascontext.arc(ballX,ballY,10,0,Math.PI*2,true);
+canvascontext.fill();
+//
+
+// These lines will draw the paddle
+
+colorRect(10,topPaddle1y,10,Paddle_Height,'white');
+colorRect(canvas.width-20,topPaddle2y,10,Paddle_Height,'white');
+
+// This draws the net
+for (i=0;i<canvas.height;i+=50){
+    colorRect(canvas.width/2,i,2,40,'white');
+}
+// End of net code.
+
+}
+
+function colorRect(leftX,topY,width,height,drawColor){
+canvascontext.fillStyle=drawColor;
+canvascontext.fillRect(leftX,topY,width,height);
+
+}
+function showWinScreen(){
+    canvascontext.fillStyle='white';
+    canvascontext.fillText("Click to continue",400,300);
+}
+</script>
+</html>
