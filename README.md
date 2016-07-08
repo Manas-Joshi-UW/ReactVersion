@@ -10,13 +10,23 @@ WELCOME TO MANAS JOSHI'S REACT VERSION:
 
 // install mongodb on your computer, installation may vary with os.
 
-2. create directory: `/data/db/`
------
-3. in a separate terminal run: `mongod` or `sudo mongod`
------
-4. in terminal that is on project directory, run: `node server.js`
-// on Ubuntu: `nodejs server.js`
------
+2. Create a directory: 
+------
+`/data/db/`
 
-5. now go to `localhost:3000`
------
+3. In a separate terminal run: 
+------
+`mongod` or 
+`sudo mongod`
+
+4. In a terminal that is on project directory, run: 
+------
+`node server.js`
+
+On Ubuntu:
+------
+`nodejs server.js`
+
+5. Now go to: 
+------
+`localhost:3000`
