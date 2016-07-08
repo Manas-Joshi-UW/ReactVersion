@@ -11,7 +11,10 @@ WELCOME TO MANAS JOSHI'S REACT VERSION:
 
 2. create directory: /data/db/
 
-3. in a separate terminal run: mongod
+3. in a separate terminal run: mongod or sudo mongod
 
 4. in terminal that is on project directory, run: node server.js
 // on Ubuntu: nodejs server.js
+
+
+5. now go to localhost:3000
