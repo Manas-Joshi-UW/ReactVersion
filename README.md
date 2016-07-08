@@ -1,7 +1,8 @@
 WELCOME TO MANAS JOSHI'S REACT VERSION:
+=======================================
 
 1. Download the repository and go to this directory.
-
+-----
 // Please make sure you have npm
 
 // make sure you have the dependencies in the in package.json file.
@@ -9,12 +10,13 @@ WELCOME TO MANAS JOSHI'S REACT VERSION:
 
 // install mongodb on your computer, installation may vary with os.
 
-2. create directory: /data/db/
+2. create directory: `/data/db/`
+-----
+3. in a separate terminal run: `mongod` or `sudo mongod`
+-----
+4. in terminal that is on project directory, run: `node server.js`
+// on Ubuntu: `nodejs server.js`
+-----
 
-3. in a separate terminal run: mongod or sudo mongod
-
-4. in terminal that is on project directory, run: node server.js
-// on Ubuntu: nodejs server.js
-
-
-5. now go to localhost:3000
+5. now go to `localhost:3000`
+-----
