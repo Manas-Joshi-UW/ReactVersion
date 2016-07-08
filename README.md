@@ -5,8 +5,8 @@ WELCOME TO MANAS JOSHI'S REACT VERSION:
 -----
 2. Please make sure you have installed nodejs and npm
 -----
-###Make sure you have the dependencies in the in package.json file.
-###If you don't have all, just try npm install.
+Make sure you have the dependencies in the in package.json file.
+If you don't have all, just try npm install.
 
 3.Install mongodb on your computer, installation may vary with os.
 --------
@@ -24,7 +24,6 @@ WELCOME TO MANAS JOSHI'S REACT VERSION:
 `node server.js`
 
 On Ubuntu:
-------
 `nodejs server.js`
 
 7. Now go to: 
